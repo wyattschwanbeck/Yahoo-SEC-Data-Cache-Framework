@@ -51,7 +51,8 @@ namespace EdgarCacheFramework
                     {
                         s = await edgarTask.Results[i].DownloadXbrlDocumentAsync();
                         StreamReader srCheck = new StreamReader(s);
-                        if (srCheck.ReadToEnd() != "")
+                        string xml = srCheck.ReadToEnd();
+                        if (xml != "")
                             doc = XbrlInstanceDocument.Create(s);
                         else
                             doc = null;
@@ -61,7 +62,7 @@ namespace EdgarCacheFramework
                             {
                                 financialStatements[i - blankRepAdj] = doc.CreateFinancialStatement();
                                 StreamReader sr = new StreamReader(s);
-                                DbHelper.SaveDocument(financialStatements[i-blankRepAdj], ticker, edgarTask.Results[i].FilingDate.Date, sr.ReadToEnd());
+                                DbHelper.SaveDocument(financialStatements[i-blankRepAdj], ticker, edgarTask.Results[i].FilingDate.Date, xml);
 
                             } catch (Exception ex)
                             {
@@ -80,7 +81,8 @@ namespace EdgarCacheFramework
                         Console.WriteLine(e.Message);
                         s = await edgarTask.Results[i].DownloadXbrlDocumentAsync();
                         StreamReader srCheck = new StreamReader(s);
-                        if (srCheck.ReadToEnd() != "")
+                        string xml = srCheck.ReadToEnd();
+                        if (xml  != "")
                             doc = XbrlInstanceDocument.Create(s);
                         else
                             doc = null;
@@ -88,8 +90,8 @@ namespace EdgarCacheFramework
                         if (doc != null)
                         {
                             financialStatements[i-blankRepAdj] = doc.CreateFinancialStatement();
-                            StreamReader sr = new StreamReader(s);
-                            DbHelper.SaveDocument(financialStatements[i], ticker, edgarTask.Results[i].FilingDate.Date, sr.ReadToEnd());
+                            //StreamReader sr = new StreamReader(s);
+                            DbHelper.SaveDocument(financialStatements[i], ticker, edgarTask.Results[i].FilingDate.Date, xml);
                         } else
                         {
                             blankRepAdj++;

@@ -17,6 +17,22 @@ namespace EdgarCacheFramework.DataAccess
 
     public static class DbHelper
     {
+        public static FinancialStatementInstance[] GetFinancialStatementInstances(string ticker, string reportType, DateTime periodStart, DateTime periodEnd)
+        {
+            FinancialStatementInstance[] instances;
+            using (var context = new FinancialStatements())
+            {
+                //long MinFileDate = DateTime.Today.ToFileTimeUtc() - (DateTime.Today.AddYears(-yearsPrior)).ToFileTimeUtc();
+                var query = from st in context.FinancialStatementsInstances
+                            where st.PeriodStart >= periodStart.ToFileTimeUtc() && 
+                            st.PeriodEnd <= periodEnd.ToFileTimeUtc() && st.Ticker == ticker
+                            orderby st.PullTime descending
+                            select st;
+                instances = query.ToArray();
+                
+            }
+            return instances;
+        }
         public static FinancialStatement GetFinancialStatement(string ticker, string reportType, DateTime periodStart)
         {
             //FinancialStatement[] financialStatements = new FinancialStatement[yearsPrior];
@@ -39,8 +55,6 @@ namespace EdgarCacheFramework.DataAccess
                     return null;
                 }
                     
-                //List<FinancialStatements> result = financialStatementInstances;
-                //TODO update edgar db package to use a long numeric type for datetimes, uninstall nuget package and point at locally created one
             }
 
         }
