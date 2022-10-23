@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0</version>
+    <title>EdgarCacheFramework</title>
+    <authors>Wyatt Schwanbeck</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/wyattschwanbeck/Yahoo-SEC-Data-Cache-Framework</projectUrl>
+    <description>Minimizes external requests to Yahoo and SEC EDGAR XBRL filings by caching searched results in a code first, run-time generated SQLite database.</description>
+    <releaseNotes>Initial Release for .NET Framework</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>xbrl yahoo-finance edgar sec</tags>
+	<dependencies> 
+		<dependency id = "Microsoft.EntityFrameworkCore" version="3.1.30" />
+		<dependency id = "Microsoft.EntityFrameworkCore.Sqlite" version="3.1.30" />
+		<dependency id = "Microsoft.EntityFrameworkCore.Tools" version="3.1.30" />
+		<dependency id = "SecuritiesExchangeCommission.Edgar" version="6.3.2" />
+		<dependency id = "sqlite-net-pcl" version="1.8.116" />
+		<dependency id = "Xbrl" version="5.2.0" />
+		<dependency id = "Yahoo.Finance" version="4.3.0" />
+	</dependencies>
+  </metadata>
+</package>

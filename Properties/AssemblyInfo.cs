@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EdgarCacheFramework")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SQLite powered caching of financial data retreived from Yahoo.Finance and SEC EDGAR")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Wyatt Schwanbeck")]
 [assembly: AssemblyProduct("EdgarCacheFramework")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]

@@ -16,11 +16,11 @@ namespace EdgarCacheFramework
     {
        
         private HistoricalDataProvider yahooDl;
-        public DataPullHelper()
+        public DataPullHelper(string UserName)
         {
 
-            SecuritiesExchangeCommission.Edgar.SecRequestManager.Instance.UserAgent = "DBCachingEntityFramework-WyattSchwanbeck/1.0.0";
-            yahooDl = new HistoricalDataProvider();     
+            SecuritiesExchangeCommission.Edgar.SecRequestManager.Instance.UserAgent = "EdgarCacheFrmework-{0}/1.0.1";
+            yahooDl = new HistoricalDataProvider();
 
     }
         /// <summary>
@@ -61,7 +61,6 @@ namespace EdgarCacheFramework
                             try
                             {
                                 financialStatements[i - blankRepAdj] = doc.CreateFinancialStatement();
-                                StreamReader sr = new StreamReader(s);
                                 DbHelper.SaveDocument(financialStatements[i-blankRepAdj], ticker, edgarTask.Results[i].FilingDate.Date, xml);
 
                             } catch (Exception ex)
@@ -90,7 +89,6 @@ namespace EdgarCacheFramework
                         if (doc != null)
                         {
                             financialStatements[i-blankRepAdj] = doc.CreateFinancialStatement();
-                            //StreamReader sr = new StreamReader(s);
                             DbHelper.SaveDocument(financialStatements[i], ticker, edgarTask.Results[i].FilingDate.Date, xml);
                         } else
                         {

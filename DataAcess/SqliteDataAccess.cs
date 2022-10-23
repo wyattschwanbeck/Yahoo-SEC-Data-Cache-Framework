@@ -118,7 +118,7 @@ namespace EdgarCacheFramework.DataAccess
             }
             }
 
-        private static FinancialStatement ConvertFromInstance(FinancialStatementInstance instance)
+        public static FinancialStatement ConvertFromInstance(FinancialStatementInstance instance)
         {
             FinancialStatement financialStatement = new FinancialStatement();
             financialStatement.PeriodStart = DateTime.FromFileTimeUtc(instance.PeriodStart);
@@ -145,7 +145,7 @@ namespace EdgarCacheFramework.DataAccess
             
             return financialStatement;
             }
-        private static FinancialStatementInstance ConvertToInstance(FinancialStatement instance, string Ticker, DateTime filingDate, string xml)
+        public static FinancialStatementInstance ConvertToInstance(FinancialStatement instance, string Ticker, DateTime filingDate, string xml)
         {
             FinancialStatementInstance financialStatement = new FinancialStatementInstance();
             financialStatement.Ticker = Ticker;
