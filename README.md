@@ -6,8 +6,8 @@ Stock prices are validated after 90 days from caching in case of stock splits. S
 
 
 ## Usage
-
-    DataPullHelper pullHelper = new DataPullHelper();
+    //Create a new datapull helper and pass it a username
+    DataPullHelper pullHelper = new DataPullHelper("MyUserAgentName");
     //Retreive financial statements
     FinancialStatement[] statements = await pullHelper.GetFinancialStatements("MSFT", "10-Q", 2);
     //Retreive stockprices
